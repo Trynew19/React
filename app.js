@@ -3,6 +3,8 @@ const express = require('express')
 
 const app = express()
 
+require("./models/dbconfig").dbconnection()  //db connection with mongodb atlas 
+
 
 
 
