@@ -11,7 +11,7 @@ require("./models/dbconfig").dbconnection()  //db connection with mongodb atlas
 const userRouter = require("./routes/userRouter")
 // logger
 
-app.use(require("morgan")("combined"))   //dev , short,tokens,combined,common , morgan=logger
+app.use(require("morgan")("dev"))   //dev , short,tokens,combined,common , morgan=logger
 
   
 // body parser 
@@ -25,6 +25,11 @@ app.use(express.urlencoded({extended:true}))
 
 // Routes
 app.use("/api/user",userRouter)    //home routes
+
+
+app.all("*",(req,res,next)=>{
+    res.status(404).json({sucess:false,message:`${req.url} + route not found`})     //route handding 
+})
 
 
 
